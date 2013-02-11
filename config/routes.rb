@@ -1,13 +1,14 @@
 Warmup::Application.routes.draw do
   #get "users/add"
   match 'users/add' => 'users#add_get', :via => :get
-  match 'users/add' => 'users#add_post', :via => :post
+  match 'users/add' => 'users#add_post', :via => :post, :defaults => { :format => 'json' }
 
   match 'users/login' => 'users#login_get', :via => :get
-  match 'users/login' => 'users#login_post', :via => :post
+  match 'users/login' => 'users#login_post', :via => :post, :defaults => { :format => 'json' }
 
-  match 'TESTAPI/resetFixture' => 'users#resetFixture', :via => :post
-  match 'TESTAPI/unitTests' => 'users#unitTests', :via => :post
+  match 'TESTAPI/resetFixture' => 'users#resetFixture', :via=>:post, :defaults => { :format => 'json' }
+  #match 'TESTAPI/resetFixture' => 'users#resetFixture', :via => :post, #:defaults => { :format => 'json' }, 
+  match 'TESTAPI/unitTests' => 'users#unitTests', :via => :post, :defaults => { :format => 'json' }
   #get "users/login"
 
   #resources :users

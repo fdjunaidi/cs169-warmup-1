@@ -1,6 +1,6 @@
 Loaded suite /usr/lib/ruby/gems/1.8/gems/rake-10.0.3/lib/rake/rake_test_loader
 Started
 ..........
-Finished in 0.282266 seconds.
+Finished in 0.300513 seconds.
 
 10 tests, 10 assertions, 0 failures, 0 errors

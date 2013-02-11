@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     result = UserModel.TESTAPI_resetFixture()
     final_obj = {:errCode=>result}
     respond_to do |format|
-      format.json { render :json=>final_obj}
+      format.json { render :json=>final_obj, :status=>:ok}
     end
   end
 
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
       output = output + "\n" + line
       if ((line.include? "tests") & (line.include? "assertions") & (line.include? "failures") & (line.include? "errors"))
           broken_up = line.split(",")
-          puts "sdasdsasadsad344323242342432"
+          #puts "sdasdsasadsad344323242342432"
           #puts broken_up
           broken_up.each do |term|
             puts term
@@ -76,9 +76,9 @@ class UsersController < ApplicationController
             puts "value end "
             value = value[0]
             if term.include? "tests"
-              totalTests = value
+              totalTests = Integer(value)
             elsif  term.include? "failures"
-              nrFailed = value
+              nrFailed = Integer(value)
             end
           end
       end 
