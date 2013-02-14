@@ -15,7 +15,7 @@ gem 'json'
 #group :development, :test do
  # gem 'rspec-rails'
 #end
-
+#gem 'rspec-rails'
 group :production do
  gem 'rspec-rails'
 end
