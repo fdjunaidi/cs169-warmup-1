@@ -17,8 +17,7 @@ gem 'json'
 #end
 
 group :production do
- gem 'rspec-rails', '2.12.2'
- gem 'capybara', '1.1.2'
+ gem 'rspec-rails'
 end
 
 # Gems used only for assets and not required

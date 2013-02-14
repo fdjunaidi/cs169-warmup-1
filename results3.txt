@@ -1,0 +1,2 @@
+Running `rspec spec/UserModel_spec.rb` attached to terminal... up, run.2279
+bash: rspec: command not found
