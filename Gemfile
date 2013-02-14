@@ -11,8 +11,18 @@ gem 'pg'
 gem 'json'
 
 ### Rspec
+'''
 group :development, :test do
   gem 'rspec-rails'
+end
+'''
+group :production do
+ gem 'rspec-rails', '2.12.2'
+ gem 'capybara', '1.1.2'
+end
+
+after(:each) do
+  UserModel.delete_all
 end
 # Gems used only for assets and not required
 # in production environments by default.

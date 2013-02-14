@@ -70,6 +70,7 @@ describe UserModel do
     boolean_result.should be_true
   end
 
+
   it "Reset Fixture" do
   	UserModel.TESTAPI_resetFixture()
   	boolean_result = (UserModel.all.length==0)
