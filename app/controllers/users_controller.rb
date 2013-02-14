@@ -60,15 +60,13 @@ class UsersController < ApplicationController
     #shell_command = "rake test:units > app/controllers/results.txt"
     shell_command = "rspec spec/UserModel_spec.rb > results.txt"
     system(shell_command)
-    totalTests = 10
+    totalTests = 11
     nrFailed = 0
     output = ""
     File.open("results.txt", "r").each_line do |line|
       output = output + "\n" + line
       if ((line.include? "tests") & (line.include? "assertions") & (line.include? "failures") & (line.include? "errors"))
           broken_up = line.split(",")
-          #puts "sdasdsasadsad344323242342432"
-          #puts broken_up
           broken_up.each do |term|
             puts term
             value = /\d+/.match(term)
@@ -76,9 +74,9 @@ class UsersController < ApplicationController
             puts value
             puts "value end "
             value = value[0]
-            if term.include? "tests"
+            if term.include? "examples"
               totalTests = Integer(value)
-            elsif  term.include? "failures"
+            elsif  term.include? "fail"
               nrFailed = Integer(value)
             end
           end

@@ -1,2 +1,7 @@
-Running `rspec spec/UserModel_spec.rb` attached to terminal... up, run.1051
-bash: rspec: command not found
+...........
+
+Finished in 0.08594 seconds
+11 examples, 0 failures
+
+Randomized with seed 14453
+
