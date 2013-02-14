@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   def unitTests
     #shell_command = "ruby -Itest test/unit/user_model_test.rb > results.txt"
     #shell_command = "rake test:units > app/controllers/results.txt"
-    shell_command = "rspec spec/UserModel_spec.rb > app/controllers/results.txt"
+    shell_command = "rspec spec/UserModel_spec.rb > results.txt"
     system(shell_command)
     totalTests = 10
     nrFailed = 0
