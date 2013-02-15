@@ -1,5 +1,6 @@
 Warmup::Application.routes.draw do
   #get "users/add"
+  match 'users/delegate' => 'users#delegate', :via => :post, :defaults => { :format => 'json' }
   match 'users/add' => 'users#add_get', :via => :get
   match 'users/add' => 'users#add_post', :via => :post, :defaults => { :format => 'json' }
 

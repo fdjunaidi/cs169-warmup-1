@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
   
+  #def delegate
+    #if params[:login]
+      #ogin_post(params[:user],params)
+    #else
+      #add_post()
+    #end
+  #end
+
   def add_get
   	@user_models = UserModel.all
 
@@ -47,11 +55,16 @@ class UsersController < ApplicationController
   	if (errCode>0)
   		count = errCode
   		errCode = 1
-  	end
-  	final_obj = {:errCode=> errCode, :count=>count}
-  	respond_to do |format|
-  		format.json { render :json=>final_obj, :status=>200}
-  	end
+      final_obj = {:errCode=> errCode, :count=>count}
+      respond_to do |format|
+        format.json { render :json=>final_obj, :status=>200}
+      end
+  	else
+  	 final_obj = {:errCode=> errCode}
+  	 respond_to do |format|
+  		  format.json { render :json=>final_obj, :status=>200}
+  	 end
+    end
   end
   
 

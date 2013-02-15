@@ -1,2 +1,17 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<html>
+<head>
+</head>
+<body>
+<h1>Login Menu</h1>
+<%= form_tag("users/delegate", :method=>"post") do %>
+	<%= label_tag(:user, "Username:") %>
+	<%= text_field_tag(:user) %>
+	<br/><br/>
+	<%= label_tag(:password, "Password:") %>
+	<%= password_field_tag(:password) %>
+	<br/><br/>
+	<%= submit_tag "Login", :name=>'preview_button' %>
+	<%= submit_tag "Add User" %>
+<% end %>
+</body>
+</html>

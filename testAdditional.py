@@ -87,9 +87,16 @@ class TestLoginUser(testLib.RestTestCase):
         respData = self.makeRequest("/users/login", method="POST", data = { 'user' : 'randomnoexist', 'password' : 'randomnoexist'} )
         self.assertTrue(respData['errCode']==-1)
 
+
+class TestUnitTests(testLib.RestTestCase):
+    """Test Unit Tests"""
+    def testReset(self):
+        respData = self.makeRequest("/TESTAPI/unitTests", method="POST", data = {} )
+        respData['output']
+        self.assertTrue(respData['nrFailed']==0 and respData['totalTests']>10)
+
 class TestResetFixture(testLib.RestTestCase):
     """Reseting database"""
     def testReset(self):
         respData = self.makeRequest("/TESTAPI/resetFixture", method="POST", data = {} )
         self.assertTrue(respData['errCode']==1)
-
