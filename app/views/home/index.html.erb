@@ -1,17 +1,89 @@
 <html>
 <head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+	 <script> 
+	 	$( document ).ready(function(){
+	 		$(function(){
+	 			//Login
+	 			$("#login_form .login").click(function(){
+	 				var user = $("#user").val();
+	 				var password = $("#password").val();
+	 			
+	 				$.ajax({
+	 					type: "POST",
+	 					url: "users/login",
+	 					dataType: 'json',
+	 					data: {"user":user, "password":password},
+	 					success: function(data){
+	 						console.log(data);
+	 						if (data.errCode==-1){
+	 							console.log("Error login")
+	 							$('message').replaceWith('Invalid username and password combination. Please try again.');
+	 						} else {
+	 							console.log("Successful login")
+	 						}
+	 					}
+	 				});
+	 			return false;
+	 			});
+	 			//Add
+	 			$("#login_form .add").click(function(){
+	 				var user = $("#user").val();
+	 				var password = $("#password").val();
+	 			
+	 				$.ajax({
+	 					type: "POST",
+	 					url: "users/add",
+	 					dataType: 'json',
+	 					data: {"user":user, "password":password},
+	 					success: function(data){
+	 						console.log(data);
+	 						if (data.errCode==-2){
+	 							console.log("trying to add a user that already exists")
+	 							$('message').replaceWith('trying to add a user that already exists');
+	 						} else if (data.errCode==-3){
+	 							console.log("invalid user name (user name should be non-empty and at most 128 ascii characters long)")
+	 							$('message').replaceWith('invalid user name (user name should be non-empty and at most 128 ascii characters long)');
+	 						} else if (data.errCode==-4){
+	 							console.log("invalid password (password should be at most 128 ascii characters)")
+	 							$('message').replaceWith('invalid password (password should be at most 128 ascii characters)');
+	 						} else {
+	 							console.log("Successful login")
+	 							$('legend').replaceWith(' ');
+	 							$('#internal').replaceWith(
+	 								'Welcome '+ user + '<br/> ' +
+	 								'You have logged in ' + data.count + ' times. <br/>' +
+	 								'<button class="logout" type="logout">Logout</button>'
+	 							);
+	 						}
+	 					}
+	 				});
+	 			return false;
+	 			});
+	 		});
+	 	});
+	 </script>
 </head>
 <body>
-<h1>Login Menu</h1>
-<%= form_tag("users/delegate", :method=>"post") do %>
-	<%= label_tag(:user, "Username:") %>
-	<%= text_field_tag(:user) %>
-	<br/><br/>
-	<%= label_tag(:password, "Password:") %>
-	<%= password_field_tag(:password) %>
-	<br/><br/>
-	<%= submit_tag "Login", :name=>'preview_button' %>
-	<%= submit_tag "Add User" %>
-<% end %>
+<form id="login_form" method="post">
+	<fieldset>
+		<legend>Login Menu</legend>
+		<section id="internal">
+			<message>Please enter your credentials below</message>
+				<ol>
+					<li>
+						<label for=user>Username</label>
+						<input name="user" id="user" type="text">
+					</li>
+					<li>
+						<label for=password>Password</label>
+						<input name="password" id="password" type="password">
+					</li>
+				</ol>
+			<button class="login" type="login">Login</button>
+			<button class="add" type="add">Add User</button>
+		</section>
+	</fieldset>
+</form>
 </body>
 </html>

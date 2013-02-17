@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   
-  #def delegate
-    #if params[:login]
-      #ogin_post(params[:user],params)
-    #else
-      #add_post()
-    #end
-  #end
+  def delegate
+    if params[:login]
+      login_post
+    else
+      add_post
+    end
+  end
 
   def add_get
   	@user_models = UserModel.all
