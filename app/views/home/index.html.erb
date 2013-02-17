@@ -21,6 +21,12 @@
 	 							$('message').replaceWith('Invalid username and password combination. Please try again.');
 	 						} else {
 	 							console.log("Successful login")
+	 							$('legend').replaceWith(' ');
+	 							$('#internal').replaceWith(
+	 								'Welcome '+ user + '<br/> ' +
+	 								'You have logged in ' + data.count + ' times. <br/>' +
+	 								'<button class="logout" type="logout">Logout</button>'
+	 							);
 	 						}
 	 					}
 	 				});
