@@ -18,11 +18,11 @@
 	 						console.log(data);
 	 						if (data.errCode==-1){
 	 							console.log("Error login")
-	 							$('message').replaceWith('Invalid username and password combination. Please try again.');
+	 							$('message').text('Invalid username and password combination. Please try again.');
 	 						} else {
 	 							console.log("Successful login")
-	 							$('legend').replaceWith(' ');
-	 							$('#internal').replaceWith(
+	 							$('legend').text(' ');
+	 							$('#internal').html(
 	 								'Welcome '+ user + '<br/> ' +
 	 								'You have logged in ' + data.count + ' times. <br/>' +
 	 								'<button class="logout" type="logout">Logout</button>'
@@ -45,18 +45,18 @@
 	 					success: function(data){
 	 						console.log(data);
 	 						if (data.errCode==-2){
-	 							console.log("trying to add a user that already exists")
-	 							$('message').replaceWith('trying to add a user that already exists');
+	 							console.log("Trying to add a user that already exists")
+	 							$('message').text('Trying to add a user that already exists');
 	 						} else if (data.errCode==-3){
 	 							console.log("invalid user name (user name should be non-empty and at most 128 ascii characters long)")
-	 							$('message').replaceWith('invalid user name (user name should be non-empty and at most 128 ascii characters long)');
+	 							$('message').text('Invalid user name (user name should be non-empty and at most 128 ascii characters long)');
 	 						} else if (data.errCode==-4){
 	 							console.log("invalid password (password should be at most 128 ascii characters)")
-	 							$('message').replaceWith('invalid password (password should be at most 128 ascii characters)');
+	 							$('message').text('Invalid password (password should be at most 128 ascii characters)');
 	 						} else {
 	 							console.log("Successful login")
-	 							$('legend').replaceWith(' ');
-	 							$('#internal').replaceWith(
+	 							$('legend').text(' ');
+	 							$('#internal').html(
 	 								'Welcome '+ user + '<br/> ' +
 	 								'You have logged in ' + data.count + ' times. <br/>' +
 	 								'<button class="logout" type="logout">Logout</button>'
@@ -91,5 +91,6 @@
 		</section>
 	</fieldset>
 </form>
+
 </body>
 </html>
